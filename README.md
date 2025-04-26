@@ -32,7 +32,7 @@ All visualizations are saved in the Images/ folder:
 - Model Comparison Heatmap
 
 ## 📁 Project Structure
-
+```
 Spam_Ham_Classifier/
 ├── Images/
 │   ├── Count Plot of Classes.png
@@ -47,16 +47,16 @@ Spam_Ham_Classifier/
 ├── Prediction_message.py
 ├── requirements.txt
 ├── README.md
-
+```
 
 
 ## 📦 Requirements
 
 Install the required libraries using:
 
-bash
+```bash
 pip install -r requirements.txt
-
+```
 
 
 
@@ -67,22 +67,22 @@ pip install -r requirements.txt
 
 Clone the repository:
 
-bash
+```bash
 git clone https://github.com/your-username/Spam_Ham_Classifier.git
 cd Spam_Ham_Classifier
-
+```
 
 Install the requirements:
 
-bash
+```bash
 pip install -r requirements.txt
-
+```
 
 Run the Streamlit app:
 
-bash
+```bash
 streamlit run Prediction_message.py
-
+```
 ---
 
 ## 📩 About the Author
