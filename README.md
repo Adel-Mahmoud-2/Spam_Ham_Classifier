@@ -1,83 +1,91 @@
-📩 Spam-Ham SMS Classifier
-هذا المشروع يهدف إلى بناء نموذج ذكي يستطيع تصنيف رسائل SMS إلى Spam أو Ham بدقة عالية، مع توفير واجهة سهلة للتفاعل عبر Streamlit.
+# Spam Ham SMS Classifier 📩
 
-📝 فكرة المشروع
-تم استخدام مجموعة بيانات تحتوي على رسائل SMS مصنفة إلى "Ham" (طبيعية) أو "Spam" (إعلانات/احتيال).
+This project is a machine learning model that classifies SMS messages as *Spam* or *Ham (Not Spam)*.  
+It includes data exploration, model training, evaluation, and a Streamlit app for easy interaction.
 
-قمنا بتحليل البيانات ورسم عدة رسومات توضيحية لفهم العلاقة بين خصائص الرسائل (عدد الأحرف، الكلمات، الجمل) والتصنيفات.
+## 🔍 About the Project
 
-جربنا عدة خوارزميات تعلم آلي واختارنا أفضلها بناءً على الأداء العملي.
+- Explored the relationship between characters, words, and sentences using a *pairplot*.
+- Visualized the class distribution (*Spam vs Ham) using a **countplot*.
+- Compared multiple models using a *heatmap* visualization.
+- Preprocessed text data (cleaning, lowercasing, tokenization, stopword removal, lemmatization).
+- Trained and compared four models: *Naive Bayes, **Random Forest, **SVC, **KNN*.
+- Selected *Random Forest* as the final model due to its slightly better performance and faster training.
+- Saved models and vectorizers using *Pickle* for quick reuse.
+- Built a *Streamlit* app for easy user interaction.
 
-🧹 خطوات تجهيز البيانات
-تنظيف النصوص عبر إزالة الأرقام والرموز الخاصة (باستخدام تعبيرات منتظمة).
+## 📊 Model Performance
 
-تحويل جميع الأحرف إلى حروف صغيرة.
+| Model         | Precision | Recall  | F1-Score | Test Accuracy |
+|---------------|-----------|---------|----------|---------------|
+| SVC           | 0.9921    | 0.8333  | 0.9058   | 0.9767        |
+| Random Forest | 1.0000    | 0.8267  | 0.9051   | 0.9767        |
+| KNN           | 1.0000    | 0.4000  | 0.5714   | 0.9193        |
+| Naive Bayes   | 0.9910    | 0.7333  | 0.8429   | 0.9632        |
 
-تطبيق Tokenization لتقسيم الجمل والكلمات.
+## 🖼 Visualizations
 
-إزالة Stopwords لترك الكلمات المفيدة فقط.
+All visualizations are saved in the Images/ folder:
 
-استخدام Lemmatization لتحويل الكلمات إلى جذرها الأساسي.
+- Pairplot of Characters, Words, and Sentences
+- Countplot of Spam vs Ham Classes
+- Model Comparison Heatmap
 
-📊 تحليل البيانات (Visualization)
-Pairplot: عرض العلاقة بين عدد الأحرف، الكلمات، الجمل حسب نوع الرسالة.
+## 📁 Project Structure
 
-Countplot: عرض عدد رسائل Ham مقابل Spam.
-
-Heatmap: مقارنة أداء النماذج بناءً على ترتيب مقاييس التقييم.
-
-🤖 النماذج المستخدمة
-تم تجربة 4 نماذج:
-
-
-النموذج	Precision	Recall	F1-Score	Test Accuracy
-SVC	0.9921	0.8333	0.9058	0.9767
-Random Forest	1.0000	0.8267	0.9051	0.9767
-K-Neighbors	1.0000	0.4000	0.5714	0.9193
-Naive Bayes	0.9910	0.7333	0.8429	0.9632
-→ تم اختيار Random Forest لأنه حقق أعلى F1-Score مع سرعة تعلم عالية.
-
-🛠️ الأدوات والمكتبات المستخدمة
-Python (Numpy, Pandas)
-
-Seaborn, Matplotlib
-
-NLTK (للمعالجة اللغوية)
-
-Scikit-learn (للتعلم الآلي)
-
-Streamlit (لبناء واجهة المستخدم)
-
-🗃️ تقسيم المشروع
 Spam_Ham_Classifier/
-│
-├── Images/                   # كل الصور والفيجوالزيشن اللي رسمناها
+├── Images/
 │   ├── Count Plot of Classes.png
 │   ├── pairplot_char_word_sent.png
 │   └── model_comparison_heatmap_ranked.png
-│
-├── Model/                    # الموديل و tfidf و encoder اللي هنحفظهم
+├── Model/
 │   ├── model.pkl
 │   ├── tfidf.pkl
 │   └── label_encoder.pkl
-│
-├── Notebooks/                # ملف النوتبوك الكامل اللي فيه الشغل (كود + شرح)
+├── Notebooks/
 │   └── Spam_Ham_Classifier.ipynb
-│
-├── predict_message.py        # سكريبت منفصل لعمل prediction لأي رسالة جديدة
-│
-├── requirements.txt          # مكتوب فيه المكتبات اللي استخدمناها
-│
-├── README.md                  # شرح كامل للمشروع
+├── Prediction_message.py
+├── requirements.txt
+├── README.md
 
-🚀 طريقة الاستخدام
-قم بتثبيت المتطلبات عبر:
+
+
+## 📦 Requirements
+
+Install the required libraries using:
+
+bash
 pip install -r requirements.txt
 
-شغل الواجهة التفاعلية:
-streamlit run predict_message.py
 
-✨ مميزات إضافية
-تم حفظ الموديل والـ TF-IDF والـ Label Encoder بملفات .pkl لاستخدامهم دون الحاجة لإعادة التدريب كل مرة.
 
-Streamlit سهل الاستخدام لأي مستخدم لتجربة تصنيف رسائل SMS بنقرة زر واحدة!
+
+
+---
+
+## 🚀 How to Run
+
+Clone the repository:
+
+bash
+git clone https://github.com/your-username/Spam_Ham_Classifier.git
+cd Spam_Ham_Classifier
+
+
+Install the requirements:
+
+bash
+pip install -r requirements.txt
+
+
+Run the Streamlit app:
+
+bash
+streamlit run Prediction_message.py
+
+---
+
+## 📩 About the Author
+Built with passion and learning.
+A small step towards mastering machine learning and building practical AI applications. 🚀\
+Adel Mahmoud
